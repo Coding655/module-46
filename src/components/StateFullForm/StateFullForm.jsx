@@ -1,66 +1,57 @@
 import { useState } from "react";
 
 const StateFullForm = () => {
-    /* email state */
-    const [email, setEmail] = useState(null)
-    /* password state */
-    const [password, setPassword]= useState(null);
-    // text state
-    const [text, setText] = useState('');
-    const [error, setError] = useState('');
-    /* event handler  */
+
+        const [name, setName] = useState(null);
+        const [email, setEmail] = useState(null);
+        const [password, setPassword] = useState(null);
+        const [error, setError] = useState('');
+
+
     const handleStateFullForm = e =>{
         e.preventDefault()
         if(password.length < 6){
-            setError('you have to use 6 letters or characters')
+            setError('please input 6 character longer password ')
         }
         else{
             setError('')
-            console.log(email,text,password)
+            console.log(name,email,password)
         }
-        
        
-        // console.log(e.target.name.value)
-        // console.log(e.target.email.value)
-        // console.log(e.target.password.value)
-        console.log("btn clicked")
     }
-    /* onChange text */
-    const handleTextChange = e =>{
-        setText(e.target.value)
-    }
-    
-    /* onChange pass */
-    const handlePassChange = e =>{
-       setPassword(e.target.value)
-    }
-    /* onChange Email */
 
-    const handleOnChangeEmail = e => {
+    const handleEmailChange = e =>{
         // console.log(e.target.value)
         setEmail(e.target.value)
     }
+    const handlePasswordChange = e =>{
+        setPassword(e.target.value)
+    }
+    const handleNameChange = e =>{
+        setName(e.target.value)
+    }
+
     return (
         <div>
-            <form onSubmit={handleStateFullForm}>
-                
-                <input type="text" name="name" value={text}
-                onChange={handleTextChange}
-                />
+             <form onSubmit={handleStateFullForm}>
+                <input
+                onChange={handleNameChange} type="text" name="name" />
                 <br />
-                <input type="email" name="email" 
-                onChange={handleOnChangeEmail}
-                />
+                <input 
+                    onChange={handleEmailChange}
+                    type="email" name="email" id="" />
                 <br />
-                <input type="password" name="password" required  
-                onChange={handlePassChange}
-                />
+                <input
+                onChange={handlePasswordChange}    
+                type="password" name="password" required />
                 <br />
-                <input type="submit" value="submit" />
+                <input type="submit" value="submit"  />
+
                 {
-                    error && <p>{error}</p>
-                }
+                error && <p>{error}</p>
+                }  
             </form>
+                  
         </div>
     );
 };
