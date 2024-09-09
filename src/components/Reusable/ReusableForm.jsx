@@ -1,3 +1,5 @@
+
+
 const ReusableForm = ({formTitle, handleSubmit, submitBtnText = 'Submit', children}) => {
 
         const handleLocalSubmit = e => {
@@ -27,5 +29,7 @@ const ReusableForm = ({formTitle, handleSubmit, submitBtnText = 'Submit', childr
         </div>
     );
 };
+
+
 
 export default ReusableForm;
